@@ -1,19 +1,13 @@
 <template>
   <div class="wrapper">
     <Menu/>
-    <div class="list">
+    <div class="main">
       <div class="loading" v-if="loading">
         <div class="lds-facebook"><div></div><div></div><div></div></div>
       </div>
-      <GameTile
-      v-for="game in games"
-      :key="game.id"
-      :title="game.name"
-      :description="game.description"
-      :status="game.avaliable"
-      :image="game.picture.url"
-      data-aos="fade-up"
-      />
+      <font-awesome-icon :icon="['fas','user-circle']" class="user-circle" v-if="!loading" data-aos="zoom-in"/>
+      <div class="email" v-if="!loading" data-aos="zoom-in">{{ user.email }}</div>
+      <div class="logout" @click="logOut" v-if="!loading" data-aos="fade-up">Wyloguj</div>
     </div>
   </div>
 </template>
@@ -21,30 +15,34 @@
 <script>
 import axios from 'axios'
 import Menu from '../components/Menu'
-import GameTile from '../components/GameTile'
 
 export default {
-  name: 'Catalog',
-  components: {
-    Menu,
-    GameTile
-  },
+  name: 'MyProfile',
   data() {
     return {
-      games: [],
+      user: null,
       error: null,
-      loading: true,
+      loading: true
+    }
+  },
+  components: {
+    Menu,
+  },
+  methods: {
+    logOut() {
+      localStorage.removeItem('token');
+      this.$router.push('/login');
     }
   },
   mounted() {
     axios({
       method: 'post',
-      url: 'http://192.168.1.105:5000/games',
+      url: 'http://192.168.1.105:5000/userinfo',
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token')
-      }, 
+      }
     }).then(response => {
-      this.games = response.data.games;
+      this.user = response.data;
       this.loading = false;
     }).catch(err => {
       this.error = err;
@@ -63,7 +61,7 @@ export default {
   background-color: #FFF9E3;
 }
 
-.list {
+.main {
   margin-top: 5rem;
   width: 100%;
   height: 100%;
@@ -71,6 +69,30 @@ export default {
   flex-direction: column;
   align-items: center;
   padding-top: 2rem;
+}
+
+.user-circle {
+  font-size: 8rem;
+  color: rgb(54, 54, 54);
+}
+
+.email {
+  margin-top: 1.5rem;
+  color: rgb(54, 54, 54);
+}
+
+.logout {
+  width: 15rem;
+  height: 3.5rem;
+  background-color: #F5BB33;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(119, 88, 17);
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-top: 3rem;
 }
 
 .loading {
