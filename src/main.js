@@ -17,6 +17,7 @@ import AOS from 'aos'
 import 'aos/dist/aos.css';
 import App from './App.vue'
 import router from './router'
+import './registerServiceWorker'
 
 AOS.init();
 library.add(faListUl, faBoxOpen, faUserAlt, faCheckCircle, faTimesCircle, faCalendarPlus, faHourglassEnd, faUserCircle, faPlusCircle, faMinusCircle);
