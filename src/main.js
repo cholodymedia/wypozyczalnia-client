@@ -8,7 +8,9 @@ import {
   faTimesCircle,
   faCalendarPlus,
   faHourglassEnd,
-  faUserCircle
+  faUserCircle,
+  faPlusCircle,
+  faMinusCircle
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import AOS from 'aos'
@@ -17,7 +19,7 @@ import App from './App.vue'
 import router from './router'
 
 AOS.init();
-library.add(faListUl, faBoxOpen, faUserAlt, faCheckCircle, faTimesCircle, faCalendarPlus, faHourglassEnd, faUserCircle);
+library.add(faListUl, faBoxOpen, faUserAlt, faCheckCircle, faTimesCircle, faCalendarPlus, faHourglassEnd, faUserCircle, faPlusCircle, faMinusCircle);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.config.productionTip = false

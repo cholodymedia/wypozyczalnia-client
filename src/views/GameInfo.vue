@@ -5,16 +5,18 @@
       <div class="loading" v-if="loading">
         <div class="lds-facebook"><div></div><div></div><div></div></div>
       </div>
-      <GameTile
-      v-for="game in games"
+      <GameTileInfo
+      v-if="game"
       :key="game.id"
       :id="game.id"
       :title="game.name"
       :description="game.description"
+      :date_end="game.date_end"
       :status="game.avaliable"
       :image="game.picture.url"
-      data-aos="fade-up"
+      data-aos="fade-down"
       />
+      <div class="error" v-if="error" data-aos="zoom-in">Nie znaleziono gry</div>
     </div>
   </div>
 </template>
@@ -22,30 +24,35 @@
 <script>
 import axios from 'axios'
 import Menu from '../components/Menu'
-import GameTile from '../components/GameTile'
+import GameTileInfo from '../components/GameTileInfo'
 
 export default {
-  name: 'Catalog',
+  name: 'GameInfo',
   components: {
     Menu,
-    GameTile
+    GameTileInfo
   },
   data() {
     return {
-      games: [],
+      game: null,
       error: null,
       loading: true,
     }
   },
   mounted() {
+    let urlParams = new URLSearchParams(window.location.search);
+    let id = urlParams.get('id');
     axios({
       method: 'post',
-      url: 'http://192.168.1.105:5000/games',
+      url: 'http://192.168.1.105:5000/gameinfo',
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token')
-      }, 
+      },
+      data: {
+        gameID: id
+      } 
     }).then(response => {
-      this.games = response.data.games;
+      this.game = response.data.game;
       this.loading = false;
     }).catch(err => {
       this.error = err;
@@ -117,5 +124,12 @@ export default {
     top: 24px;
     height: 32px;
   }
+}
+
+.error {
+  font-size: 1.3rem;
+  margin-top: 1rem;
+  color: rgb(97, 93, 84);
+  opacity: 0.8;
 }
 </style>

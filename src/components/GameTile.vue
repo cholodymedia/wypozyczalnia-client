@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="box" @click="gameInfo">
     <div class="left">
       <img :src="image">
     </div>
@@ -24,12 +24,18 @@ import default_game_icon from '../assets/defalut_game_icon.png'
 export default {
   name: 'GameTile',
   props: {
+    id: String,
     title: String,
     description: String,
     status: Boolean,
     image: {
       type: String,
       default: default_game_icon
+    }
+  },
+  methods: {
+    gameInfo() {
+      this.$router.push('/gameinfo?id=' + this.id);
     }
   }
 }

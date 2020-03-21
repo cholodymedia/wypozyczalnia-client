@@ -6,6 +6,7 @@ import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Events from '../views/Events.vue'
 import Catalog from '../views/Catalog.vue'
+import GameInfo from '../views/GameInfo.vue'
 import MyGames from '../views/MyGames.vue'
 import MyProfile from '../views/MyProfile.vue'
 
@@ -35,6 +36,12 @@ const routes = [
     path: '/catalog',
     name: 'Catalog',
     component: Catalog,
+    meta: {requiresAuth: true}
+  },
+  {
+    path: '/gameinfo',
+    name: 'GameInfo',
+    component: GameInfo,
     meta: {requiresAuth: true}
   },
   {
