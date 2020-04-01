@@ -37,7 +37,7 @@ export default {
   mounted() {
     axios({
       method: 'post',
-      url: 'http://192.168.1.105:5000/userinfo',
+      url: 'https://wypozyczalnia-gier.herokuapp.com/userinfo',
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token')
       }

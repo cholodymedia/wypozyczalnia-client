@@ -44,7 +44,7 @@ export default {
     let id = urlParams.get('id');
     axios({
       method: 'post',
-      url: 'http://192.168.1.105:5000/gameinfo',
+      url: 'https://wypozyczalnia-gier.herokuapp.com/gameinfo',
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token')
       },

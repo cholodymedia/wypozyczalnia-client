@@ -20,6 +20,7 @@
         <font-awesome-icon :icon="['fas','check-circle']" class="icon"/>
         <span>dostępna</span>
       </div>
+      <div class="days-text" v-if="borrow">Liczba dni:</div>
       <div class="days-box" v-if="borrow">
         <div class="control" @click="daysMinus">
           <font-awesome-icon :icon="['fas','minus-circle']" class="icon minus"/>
@@ -84,7 +85,7 @@ export default {
     addLoan() {
       axios({
         method: 'post',
-        url: 'http://192.168.1.105:5000/addloan',
+        url: 'https://wypozyczalnia-gier.herokuapp.com/addloan',
         headers: {
           Authorization: 'Bearer ' + localStorage.getItem('token')
         },
@@ -225,6 +226,17 @@ export default {
     background-color: rgb(47, 179, 47);
     color: white
   }
+}
+
+.days-text {
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .days-box {

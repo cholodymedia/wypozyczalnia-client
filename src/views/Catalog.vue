@@ -40,7 +40,7 @@ export default {
   mounted() {
     axios({
       method: 'post',
-      url: 'http://192.168.1.105:5000/games',
+      url: 'https://wypozyczalnia-gier.herokuapp.com/games',
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token')
       }, 

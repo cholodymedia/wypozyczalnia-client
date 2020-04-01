@@ -46,7 +46,7 @@ export default {
       }else {
         axios({
           method: 'post',
-          url: 'http://192.168.1.105:5000/login',
+          url: 'https://wypozyczalnia-gier.herokuapp.com/login',
           headers: {}, 
           data: {
             email: this.email,

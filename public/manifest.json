@@ -1,0 +1,22 @@
+{
+  "short_name": "Bareo",
+  "name": "Bareo",
+  "description": "Borrow Board Games",
+  "icons": [
+    {
+      "src": "img/icons/android-chrome-maskable-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "img/icons/android-chrome-maskable-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/?source=pwa",
+  "background_color": "#3367D6",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#3367D6"
+}

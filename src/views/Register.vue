@@ -51,7 +51,7 @@ export default {
       }else {
         axios({
           method: 'post',
-          url: 'http://192.168.1.105:5000/register',
+          url: 'https://wypozyczalnia-gier.herokuapp.com/register',
           headers: {}, 
           data: {
             email: this.email,

@@ -45,7 +45,7 @@ export default {
     returnGame() {
         axios({
         method: 'post',
-        url: 'http://192.168.1.105:5000/deleteloan',
+        url: 'https://wypozyczalnia-gier.herokuapp.com/deleteloan',
         headers: {
           Authorization: 'Bearer ' + localStorage.getItem('token')
         },

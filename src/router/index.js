@@ -76,7 +76,7 @@ router.beforeEach((to, from, next) => {
   if(requiresAuth) {
     axios({
       method: 'post',
-      url: 'http://192.168.1.105:5000/checktoken',
+      url: 'https://wypozyczalnia-gier.herokuapp.com/checktoken',
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token') 
       },
@@ -88,7 +88,7 @@ router.beforeEach((to, from, next) => {
   }else if(onlylogout && token) {
     axios({
       method: 'post',
-      url: 'http://192.168.1.105:5000/checktoken',
+      url: 'https://wypozyczalnia-gier.herokuapp.com/checktoken',
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token') 
       },
